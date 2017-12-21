@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Proyecto Empresa</title>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.2.3/css/bulma.css" />
+
+    @yield('css')
+</head>
+
+<body>
+<section class="hero is-fullheight is-dark is-bold">
+    <div class="hero-body">
+        <div class="container">
+            @if (session('status'))
+                <div class="notification is-success">
+                    {{ session('status') }}
+                </div>
+            @endif
+            <div class="columns">
+                <div class="column is-4 is-offset-4">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/password/email') }}">
+                        {{ csrf_field() }}
+                        <h1 class="title">
+                            Introduce tu email para resetear tu contraseña
+                        </h1>
+                        <div class="box">
+                            <p class="control">
+                                <input name="email" class="input{{ $errors->has('email') ? ' is-danger' : '' }}" type="text" placeholder="jsmith@example.org" value="{{ old('email') }}" required autofocus>
+                            </p>
+                            @if ($errors->has('email'))
+                                <span class="help is-danger">{{ $errors->first('email') }}</span>
+                            @endif
+                            <hr>
+                            <p class="control">
+                                <button type="submit" class="button is-primary">Enviar</button>
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

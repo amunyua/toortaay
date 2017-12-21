@@ -1,0 +1,25 @@
+{
+    "name": "disitec/laravel-generator",
+    "description": "Simplified Wrapper to infyomlabs/laravel-generator ",
+    "keywords": [
+        "laravel",
+        "generator"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Francisco Javier Martinez",
+            "email": "fjmartinez@disitec.es"
+        }
+    ],
+    "require": {
+      "php": ">=5.5.9",
+      "illuminate/support": "~5.0",
+      "laravelcollective/html": "~5.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Disitec\\LaravelGenerator\\": "src/"
+        }
+    }
+}

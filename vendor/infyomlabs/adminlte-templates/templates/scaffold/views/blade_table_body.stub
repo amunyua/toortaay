@@ -1,0 +1,21 @@
+<table class="table table-responsive" id="$MODEL_NAME_PLURAL_CAMEL$-table">
+    <thead>
+        <tr>
+            $FIELD_HEADERS$
+            <th colspan="3">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach($$MODEL_NAME_PLURAL_CAMEL$ as $$MODEL_NAME_CAMEL$)
+        <tr>
+            $FIELD_BODY$
+            <td>
+                 {{--<a href="#" rel="tooltip" title="show" show-id="" class="btn btn-simple btn-info btn-icon common-show"><i class="material-icons">favorite</i></a>--}}
+                   <a href="#edit-modal" rel="tooltip" title="edit" data-toggle="modal" e-id="{{ $$PRIMARY_KEY_NAME$}}" hint="{!! url('/$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$/'.$$PRIMARY_KEY_NAME$) !!}"  class="btn btn-simple btn-warning btn-icon common-edit"><i class="material-icons">edit</i></a>
+                   <a href="#delete-modal" rel="tooltip" title="delete" data-toggle="modal" action="{!! url('/$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$/'.$$PRIMARY_KEY_NAME$) !!}" class="btn btn-simple btn-danger btn-icon common-delete"><i class="material-icons">close</i></a>
+
+            </td>
+        </tr>
+    @endforeach
+    </tbody>
+</table>

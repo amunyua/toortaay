@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Proyecto Empresa</title>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.2.3/css/bulma.css" />
+
+    @yield('css')
+</head>
+
+<body>
+<section class="hero is-fullheight is-dark is-bold">
+    <div class="hero-body">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-4 is-offset-4">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
+                        {{ csrf_field() }}
+                        <h1 class="title">
+                            Regístrate
+                        </h1>
+                        <div class="box">
+                            <label class="label">Nombre</label>
+                            <p class="control">
+                                <input name="name" class="input{{ $errors->has('name') ? ' is-danger' : '' }}" type="text" placeholder="John Smith" value="{{ old('name') }}" required autofocus>
+                            </p>
+                            @if ($errors->has('name'))
+                                <span class="help is-danger">{{ $errors->first('name') }}</span>
+                            @endif
+                            <label class="label">E-mail</label>
+                            <p class="control">
+                                <input name="email" class="input{{ $errors->has('email') ? ' is-danger' : '' }}" type="text" placeholder="jsmith@example.org" value="{{ old('email') }}" required autofocus>
+                            </p>
+                            @if ($errors->has('email'))
+                                <span class="help is-danger">{{ $errors->first('email') }}</span>
+                            @endif
+                            <label class="label">Contraseña</label>
+                            <p class="control">
+                                <input name="password" class="input{{ $errors->has('password') ? ' is-danger' : '' }}" type="password" placeholder="●●●●●●●" required>
+                            </p>
+                            @if ($errors->has('password'))
+                                <span class="help is-danger">{{ $errors->first('password') }}</span>
+                            @endif
+
+                            <label class="label">Confirma tu contraseña</label>
+                            <p class="control">
+                                <input name="password_confirmation" class="input{{ $errors->has('password_confirmation') ? ' is-danger' : '' }}" type="password" placeholder="Confirma tu contraseña" required>
+                            </p>
+                            @if ($errors->has('password_confirmation'))
+                                <span class="help is-danger">{{ $errors->first('password_confirmation') }}</span>
+                            @endif
+
+                            <p class="control">
+                                <input type="checkbox"> Estoy de acuerdo con los <a href="#">términos y condiciones.</a>
+                            </p>
+                            <hr>
+                            <p class="control">
+                                <button type="submit" class="button is-primary">Registrar</button>
+                            </p>
+                        </div>
+                        <p class="has-text-centered">
+                            <a href="{{ url('/login') }}">Ya estoy registrado</a>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

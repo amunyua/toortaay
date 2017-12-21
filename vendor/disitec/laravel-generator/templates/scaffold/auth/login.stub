@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Proyecto Empresa</title>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.2.3/css/bulma.css" />
+
+    @yield('css')
+</head>
+
+<body>
+    <section class="hero is-fullheight is-dark is-bold">
+        <div class="hero-body">
+            <div class="container">
+                <div class="columns">
+                    <div class="column is-4 is-offset-4">
+                            <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
+                                {{ csrf_field() }}
+                            <h1 class="title">
+                                Login
+                            </h1>
+                            <div class="box">
+                                <label class="label">E-mail</label>
+                                <p class="control">
+                                    <input name="email" class="input{{ $errors->has('email') ? ' is-danger' : '' }}" type="text" placeholder="jsmith@example.org" value="{{ old('email') }}" required autofocus>
+                                </p>
+                                @if ($errors->has('email'))
+                                    <span class="help is-danger">{{ $errors->first('email') }}</span>
+                                @endif
+                                <label class="label">Password</label>
+                                <p class="control">
+                                    <input name="password" class="input{{ $errors->has('password') ? ' is-danger' : '' }}" type="password" placeholder="●●●●●●●" required>
+                                </p>
+                                @if ($errors->has('password'))
+                                    <span class="help is-danger">{{ $errors->first('password') }}</span>
+                                @endif
+                                <hr>
+                                <p class="control">
+                                    <button type="submit" class="button is-primary">Login</button>
+                                </p>
+                            </div>
+                            <p class="has-text-centered">
+                                <a href="{{ url('/register') }}">Regístrate</a> |
+                                <a href="{{ url('/password/reset') }}">Recordar contraseña</a>
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
